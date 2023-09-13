@@ -160,7 +160,8 @@ void onEvent (ev_t ev)
         Serial.println(F("EV_LINK_ALIVE"));
         break;
     default:
-        Serial.println(F("Unknown event"));
+        Serial.print(F("Unknown event: "));
+        Serial.println(ev);
         break;
     }
 }
@@ -183,6 +184,11 @@ void setupLMIC(void)
     // Setting up channels should happen after LMIC_setSession, as that
     // configures the minimal channel set.
 
+    //
+    // This does not need to be setup now as its done via a build command for the AU region
+    //
+
+    /*
     LMIC_setupChannel(0, 868100000, DR_RANGE_MAP(DR_SF12, DR_SF7),  BAND_CENTI);      // g-band
     LMIC_setupChannel(1, 868300000, DR_RANGE_MAP(DR_SF12, DR_SF7B), BAND_CENTI);      // g-band
     LMIC_setupChannel(2, 868500000, DR_RANGE_MAP(DR_SF12, DR_SF7),  BAND_CENTI);      // g-band
@@ -192,6 +198,7 @@ void setupLMIC(void)
     LMIC_setupChannel(6, 867700000, DR_RANGE_MAP(DR_SF12, DR_SF7),  BAND_CENTI);      // g-band
     LMIC_setupChannel(7, 867900000, DR_RANGE_MAP(DR_SF12, DR_SF7),  BAND_CENTI);      // g-band
     LMIC_setupChannel(8, 868800000, DR_RANGE_MAP(DR_FSK,  DR_FSK),  BAND_MILLI);      // g2-band
+    */
     // TTN defines an additional channel at 869.525Mhz using SF9 for class B
     // devices' ping slots. LMIC does not have an easy way to define set this
     // frequency and support for class B is spotty and untested, so this
